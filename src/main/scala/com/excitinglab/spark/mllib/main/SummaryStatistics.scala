@@ -12,6 +12,15 @@ import org.apache.spark.rdd.RDD
  * min          每列最小值
  * variance     每列方差
  * numNonzeros  每列非零向量个数
+ *
+ * [1.0, 2.0, 3.0]
+ * [1.1, 2.1, 3.1]
+ * [1.2, 2.2, 3.2]
+ * mean = [1.1, 2.1, 3.1]
+ * max = [1.2, 2.2, 3.2]
+ * min = [1.0, 2.0, 3.0]
+ * variance = [0.01, 0.01, 0.01]
+ * numNonzeros = [3.0, 3.0, 3.0]
  */
 object SummaryStatistics {
 
@@ -19,7 +28,7 @@ object SummaryStatistics {
     val (spark, sc) = SparkUtils.env("Statistics", 2)
 
     val vector: RDD[Vector] = sc.parallelize(Seq(
-      Vectors.dense(1.0, 2.0, 0),
+      Vectors.dense(1.0, 2.0, 3.0),
       Vectors.dense(1.1, 2.1, 3.1),
       Vectors.dense(1.2, 2.2, 3.2)))
 
